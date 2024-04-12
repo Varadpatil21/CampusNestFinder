@@ -1,0 +1,16 @@
+.room-container{
+    margin-top: 50px;
+    width: 30%;
+    margin-left: 400px;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 10px;
+}
+h2{
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   margin-bottom: 10px;
+}
+.submit{
+    width:100px;
+  
+}
