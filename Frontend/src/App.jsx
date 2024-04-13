@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home } from './pages/Home/Home';
 import { Search } from './pages/Search';
-import { Book } from './pages/Book';
+import { Book } from './pages/Book/Book';
 import { SignUp } from './components/SignUp/SignUp';
 import { Login } from './components/Login/Login';
 import { Reset } from './components/Reset/Reset';
