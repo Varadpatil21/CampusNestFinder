@@ -24,3 +24,18 @@ label{
     font-weight: 700;
     margin-left: 15px;
 }
+.get-location{
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: rgb(44, 74, 240);
+    width:250px;
+    text-align: start;
+}
+.myclass{
+    position: absolute;
+    font-size: 30px;
+    color: rgb(255, 0, 51);
+    margin-left: -40px;
+    margin-top: 12px;
+}

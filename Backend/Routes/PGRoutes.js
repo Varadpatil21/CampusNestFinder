@@ -19,7 +19,7 @@ router.get('/getrooms', async (req, res) => {
 
 router.post("/addroom", upload.single('homeImage'), async (req, res) => {
     try {
-        const { name, noofRooms, rent, type, description } = req.body;
+        const {id, name, noofRooms, rent, type, description,latitude,longitude } = req.body;
         const homeImage = {
             data: req.file.buffer, 
             contentType: req.file.mimetype 
@@ -27,12 +27,15 @@ router.post("/addroom", upload.single('homeImage'), async (req, res) => {
 
       
         const newRoom = new Room({
+            id,
             name,
             noofRooms,
             rent,
             type,
             description,
-            homeImage // This assumes you're saving the image directly to the database as Buffer
+            homeImage,
+            latitude,
+            longitude 
         });
         console.log(req.file)
         await newRoom.save();

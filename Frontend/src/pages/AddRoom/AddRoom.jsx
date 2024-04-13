@@ -2,34 +2,59 @@ import { useState } from 'react';
 import React from 'react';
 import './AddRoom.css';
 import axios from 'axios';
-
+import { useAuth } from '../../AuthContext';
+import { CiLocationOn } from "react-icons/ci";
 export const AddRoom = () => {
+    const { currentUser } = useAuth(); // Access the authenticated user from the AuthContext
     const [name, setName] = useState('');
     const [noofRooms, setNoOfRooms] = useState('');
     const [rent, setRent] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
-    const [homeImage, setHomeImage] = useState(null); // Change to null
+    const [homeImage, setHomeImage] = useState(null);
+    const [latitude, setLatitude] = useState(null); // State for latitude
+    const [longitude, setLongitude] = useState(null); // State for longitude
 
     const addRoom = async (e) => {
         e.preventDefault();
-        const formData = new FormData(); // Create FormData object
+        const formData = new FormData();
         formData.append('name', name);
         formData.append('noofRooms', noofRooms);
         formData.append('rent', rent);
         formData.append('type', type);
         formData.append('description', description);
-        formData.append('homeImage', homeImage); // Append the file data
+        formData.append('homeImage', homeImage);
+        formData.append('id', currentUser.uid); // Add the owner's ID to the formData
+
+        // Add latitude and longitude to formData
+        formData.append('latitude', latitude);
+        formData.append('longitude', longitude);
 
         try {
             const response = await axios.post('http://localhost:5000/api/rooms/addroom', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data' // Set content type to multipart/form-data
+                    'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(response.data);
+            console.log(latitude,longitude);
         } catch (error) {
             console.error(error);
+        }
+    };
+
+    const getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setLatitude(position.coords.latitude);
+                    setLongitude(position.coords.longitude);
+                },
+                (error) => {
+                    console.error("Error getting location:", error);
+                }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");
         }
     };
 
@@ -54,11 +79,13 @@ export const AddRoom = () => {
                 </div>
                 <div className='input1'>
                     <label htmlFor='myfile'>Select a Home Image:</label>
-                    <input type='file' id='myfile' name='myfile' onChange={(e) => setHomeImage(e.target.files[0])} required /> {/* Set as required */}
+                    <input type='file' id='myfile' name='myfile' onChange={(e) => setHomeImage(e.target.files[0])} required />
                 </div>
-                <button type='submit' className='submit' onClick={addRoom}>
-                    Add Room
-                </button>
+                <div className='location'>
+                <button type='button' className='get-location' onClick={getLocation}>Get My Current Location</button>
+                <CiLocationOn className='myclass' /> 
+                </div>
+                <button type='submit' className='submit' onClick={addRoom}>Add Room</button>
             </form>
         </div>
     );

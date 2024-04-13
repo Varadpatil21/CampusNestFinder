@@ -17,6 +17,12 @@ const roomSchema = mongoose.Schema(
         contact: {
             type: Number,
         },
+        latitude: {
+            type: Number,
+        },
+        longitude: {
+            type: Number,
+        },
         rent: {
             type: Number,
         },
