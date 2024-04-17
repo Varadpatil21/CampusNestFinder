@@ -14,7 +14,8 @@ export const AddRoom = () => {
     const [homeImage, setHomeImage] = useState(null);
     const [latitude, setLatitude] = useState(null); // State for latitude
     const [longitude, setLongitude] = useState(null); // State for longitude
-
+    const [selectedFeatures, setSelectedFeatures] = useState([]);
+    const featureOptions = ['Attached Washroom', 'AC', 'Wifi', 'RO', 'GYM'];
     const addRoom = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -29,6 +30,7 @@ export const AddRoom = () => {
         // Add latitude and longitude to formData
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
+        formData.append('features', JSON.stringify(selectedFeatures));
 
         try {
             const response = await axios.post('http://localhost:5000/api/rooms/addroom', formData, {
@@ -36,7 +38,7 @@ export const AddRoom = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(latitude,longitude);
+            console.log(response);
         } catch (error) {
             console.error(error);
         }
@@ -55,6 +57,15 @@ export const AddRoom = () => {
             );
         } else {
             console.error("Geolocation is not supported by this browser.");
+        }
+       
+    };
+    const handleFeatureSelection = (e) => {
+        const { value, checked } = e.target;
+        if (checked) {
+            setSelectedFeatures([...selectedFeatures, value]);
+        } else {
+            setSelectedFeatures(selectedFeatures.filter((feature) => feature !== value));
         }
     };
 
@@ -81,6 +92,21 @@ export const AddRoom = () => {
                     <label htmlFor='myfile'>Select a Home Image:</label>
                     <input type='file' id='myfile' name='myfile' onChange={(e) => setHomeImage(e.target.files[0])} required />
                 </div>
+                <label className="label">Select Features:</label>
+                <div className="checkbox-container">
+                    {featureOptions.map((option, index) => (
+                        <div key={index}>
+                            <input
+                                type="checkbox"
+                                id={option}
+                                name="features"
+                                value={option}
+                                checked={selectedFeatures.includes(option)}
+                                onChange={handleFeatureSelection}
+                            />
+                            <label htmlFor={option}>{option}</label>
+                        </div>
+                    ))}</div>
                 <div className='location'>
                 <button type='button' className='get-location' onClick={getLocation}>Get My Current Location</button>
                 <CiLocationOn className='myclass' /> 

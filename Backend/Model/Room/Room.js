@@ -26,7 +26,7 @@ const roomSchema = mongoose.Schema(
         rent: {
             type: Number,
         },
-        imageurls: [],
+       features: [],
         currentBookings: [],
         type: {
             type: String,

@@ -19,7 +19,7 @@ router.get('/getrooms', async (req, res) => {
 
 router.post("/addroom", upload.single('homeImage'), async (req, res) => {
     try {
-        const {id, name, noofRooms, rent, type, description,latitude,longitude } = req.body;
+        const {id, name, noofRooms, rent, type, description,latitude,longitude,features } = req.body;
         const homeImage = {
             data: req.file.buffer, 
             contentType: req.file.mimetype 
@@ -35,7 +35,7 @@ router.post("/addroom", upload.single('homeImage'), async (req, res) => {
             description,
             homeImage,
             latitude,
-            longitude 
+            longitude,features 
         });
         console.log(req.file)
         await newRoom.save();

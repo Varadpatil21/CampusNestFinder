@@ -39,3 +39,26 @@ label{
     margin-left: -40px;
     margin-top: 12px;
 }
+
+.label {
+    margin-bottom: 10px;
+}
+
+/* Style checkboxes */
+.checkbox-container {
+    display: flex;
+    
+}
+
+.checkbox-container div {
+    margin-right: 20px; /* Adjust spacing between checkboxes */
+    margin-bottom: 10px; /* Adjust spacing between rows */
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px; /* Adjust spacing between checkbox and label */
+}
+
+.checkbox-container label {
+    cursor: pointer;
+}
