@@ -10,6 +10,9 @@ import { Login } from './components/Login/Login';
 import { Reset } from './components/Reset/Reset';
 import { Navbar } from './components/Navbar';
 import { AddRoom } from './pages/AddRoom/AddRoom';
+import {MyRoom} from './pages/MyRoom/MyRoom'
+import {MyRoom1} from './pages/MyRoom1/MyRoom1'
+import {Grid} from './components/Grid/Grid'
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
             <Route path='/add-room' element={<AddRoom />} />
             <Route path='/login' element={<Login />} />
             <Route path='/forgot' element={<Reset />} />
+            <Route path='/myroom' element={<MyRoom />} />
+            <Route path='/myroom1' element={<MyRoom1 />} />
+            <Route path='/grid' element={<Grid/>} />
           </Routes>
         </div>
       </div>

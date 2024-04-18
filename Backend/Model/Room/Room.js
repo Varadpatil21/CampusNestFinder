@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const roomSchema = mongoose.Schema(
     {
-        id: {
+        ID: {
             type: String,
         },
         owner: {

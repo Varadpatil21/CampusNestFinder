@@ -79,7 +79,17 @@ export const Navbar = () => {
                   <CgProfile />
                   {showDropdown && (
                     <div className="dropdown-content">
-                      <p>{user.email}</p>
+                      <p >{user.email}</p>
+                      {userRole === 'Student' && (
+             <p > <Link to="/myroom" className='myrooms'>My Rooms</Link> </p>
+               
+              
+            )}
+            {userRole === 'Owner' && (
+             <p > <Link to="/myroom1" className='myrooms'>My Rooms</Link> </p>
+               
+              
+            )}
                       <button onClick={handleLogout}>Logout</button>
                     </div>
                   )}

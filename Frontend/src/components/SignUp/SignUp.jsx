@@ -37,7 +37,7 @@ export const SignUp = () => {
     
     const onSubmit = async (e) => {
         e.preventDefault();
-
+    
         await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -46,7 +46,7 @@ export const SignUp = () => {
                 set(userRef, {
                     name: name,
                     email: email,
-                    role: role
+                    role: role,
                 });
                 console.log("data added successfully")
                 setAccountCreated(true);
@@ -62,6 +62,7 @@ export const SignUp = () => {
                 console.log(errorCode,errorMessage);
             });
     };
+    
 
     return (
         <div className='my-container'>
