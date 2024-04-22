@@ -19,7 +19,7 @@ router.get('/getrooms', async (req, res) => {
 
 router.post("/addroom", upload.single('homeImage'), async (req, res) => {
     try {
-        const {id, name, noofRooms, rent, type, description,latitude,longitude,features } = req.body;
+        const {ID, name, noofRooms, rent, type, description,latitude,longitude,features } = req.body;
         const homeImage = {
             data: req.file.buffer, 
             contentType: req.file.mimetype 
@@ -27,7 +27,7 @@ router.post("/addroom", upload.single('homeImage'), async (req, res) => {
 
       
         const newRoom = new Room({
-            id,
+            ID,
             name,
             noofRooms,
             rent,
@@ -47,7 +47,8 @@ router.post("/addroom", upload.single('homeImage'), async (req, res) => {
 });
 router.put('/book/:roomId', async (req, res) => {
     const { roomId } = req.params;
-    const { userId } = req.body;
+    const { userId,roomNo } = req.body;
+    const user={userId,roomNo}
   
     try {
       const room = await Room.findById(roomId);
@@ -62,7 +63,7 @@ router.put('/book/:roomId', async (req, res) => {
       }
   
       // Add userId to currentBookings array
-      room.currentBookings.push(userId);
+      room.currentBookings.push(user);
       await room.save();
   
       res.status(200).json({ message: 'Room booked successfully', room });
@@ -84,11 +85,11 @@ router.get('/:id', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
-  router.get('user/:userId', async (req, res) => {
+  router.get('/user/:userId', async (req, res) => {
     try {
-      const userid = req.params.userId;
-      console.log(userid)
-      const rooms = await Room.find({ ID:userid }); // Assuming userId field in the room document
+      const {userId} =req.params;
+      console.log(userId)
+      const rooms = await Room.find({ID:userId}); 
       res.json(rooms);
     } catch (error) {
       console.error('Error fetching rooms:', error);

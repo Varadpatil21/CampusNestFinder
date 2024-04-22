@@ -13,9 +13,10 @@ export const MyRoom1 = () => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
+        console.log(userId)
         const response = await axios.get(`http://localhost:5000/api/rooms/user/${userId}`);
         setRooms(response.data);
-        console.log(response)
+        
       } catch (error) {
         console.error('Error fetching rooms:', error);
       }
@@ -26,12 +27,26 @@ export const MyRoom1 = () => {
 
   return (
     <div>
-      <h2>Rooms for User ID: {typeof(userId)}</h2>
+     
       <ul>
-        {rooms.map(room => (
-          <li key={room._id}>
-            <h3>{room.name}</h3>
-            <p>{room.description}</p>
+        {rooms.map(roomDetails => (
+          <li key={roomDetails._id}>
+              <div key={roomDetails._id} className='room'>
+              <div className="image">
+                <img
+                  src={`data:${roomDetails.homeImage.contentType};base64,${Buffer.from(roomDetails.homeImage.data).toString('base64')}`}
+                  alt="Room Image"
+                />
+              </div>
+              <div className="description1">
+                <div className="title"><h2>{roomDetails.name}</h2></div>
+                <div className="des"><p>{roomDetails.description}</p></div>
+                <div className="type"><h3>Type: {roomDetails.type}</h3></div>
+                <div className="rentbutt">
+                  <div className="rent"><h3>₹{roomDetails.rent}</h3></div>
+                </div>
+              </div>
+            </div>
           </li>
         ))}
       </ul>

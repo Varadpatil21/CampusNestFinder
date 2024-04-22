@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+import { AuthProvider } from './AuthContext'; 
 import { Home } from './pages/Home/Home';
 import { Search } from './pages/Search';
 import { Book } from './pages/Book/Book';
@@ -16,7 +16,7 @@ import {Grid} from './components/Grid/Grid'
 
 function App() {
   return (
-    <AuthProvider> {/* Wrap your entire application with the AuthProvider */}
+    <AuthProvider> 
       <div>
         <Navbar />
         <div>

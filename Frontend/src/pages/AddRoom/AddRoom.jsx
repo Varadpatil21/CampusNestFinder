@@ -25,7 +25,7 @@ export const AddRoom = () => {
         formData.append('type', type);
         formData.append('description', description);
         formData.append('homeImage', homeImage);
-        formData.append('id', currentUser.uid); // Add the owner's ID to the formData
+        formData.append('ID', currentUser.uid); // Add the owner's ID to the formData
 
         // Add latitude and longitude to formData
         formData.append('latitude', latitude);

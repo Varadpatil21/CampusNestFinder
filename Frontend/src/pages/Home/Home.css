@@ -5,12 +5,11 @@
     min-height: 116vh;
     background-image: url('../../assets/images/back1.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+   background-size: cover;
     background-position: center;
     padding: 25px;
     margin-top: -200px;
-    margin-left: -100px;
-    margin-right: -100px;
+ 
     /* Set background color with opacity */
     background-color: rgba(0, 0, 0, 0);
     /* Adjust opacity value as needed */
@@ -22,8 +21,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin-left: -100px;
-    margin-right: -100px;
+    margin-left: -150px;
+    margin-right: -150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +32,7 @@
     font-family: "Quintessential", serif;
     font-weight: 1500;
     font-style: normal;
-    margin-top: 250px;
+    margin-top: 300px;
     font-size: 110px;
     animation: glow 100000s infinite;
 
@@ -68,6 +67,8 @@
     border-radius: 15px;
    /* // border:1px solid white; */
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 25rem;
+  text-align: center;
 }
 
 .hero h3 span:hover{
@@ -80,7 +81,7 @@ box-shadow: 0 0 15px #1074ff;
 
 }
 
-button {
+.search{
     font-size: 30px;
     border-radius: 25px;
     font-weight: 600;
@@ -88,6 +89,8 @@ button {
     color: white;
     font-family: 'Poppins', sans-serif;
     background-color: black;
+    margin:0 auto;
+    display:block;
     border: 2px solid white;
 }
 
@@ -99,7 +102,7 @@ button:hover {
 
   
   .container {
-    max-width: 1200px;
+  
     margin: 0 auto;
     text-align: center;
 
@@ -149,10 +152,11 @@ button:hover {
     background-color: #333;
     color: #fff;
     bottom: 0;
-    margin-left: -100px;
-    margin-right: -100px;
-    height: 350px;
+    margin-left: -150px;
+    margin-right: -150px;
+   
     margin-bottom: 0;
+    margin-bottom: -35px;
   }
   
  

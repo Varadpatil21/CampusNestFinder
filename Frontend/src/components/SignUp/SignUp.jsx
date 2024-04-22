@@ -74,11 +74,11 @@ export const SignUp = () => {
                         <input type="text" name='name' placeholder='Name' onChange={(e) => setName(e.target.value)} required />
                         <FaUser className='icon' />
                     </div>
-                    <div>
+                    <div className='email'>
                         <input type="email" name='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
                         <MdOutlineEmail className='icon' />
                     </div>
-                    <div>
+                    <div className="password-box">
                     <input type="password" name='password' onChange={(e) => {
                         setPassword(e.target.value);
                         checkSize(e.target.value);
